@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Small Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Poppins:wght@300;400&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="CSS/style.css" />
+</head>
+
+<body>
+
+    <!--Global mute — sticky top-left-->
+    <button class="global-mute" id="globalMuteBtn" aria-label="Mute all audio" title="Mute all audio">🔊</button>
+
+    <!--Ambient Particle Canvas-->
+    <canvas id="particles" aria-hidden="true"></canvas>
+
+    <!--Hero-->
+    <section class="hero">
+        <p class="hero-eyebrow">a personal gallery For CHATA</p>
+        <h1 class="hero-title">Your art has<br><em>stayed with me.</em></h1>
+        <div class="hero-divider"></div>
+        <p class="hero-sub">A small collection built with care and quiet appreciation.</p>
+        <span class="hero-scroll-hint">explore</span>
+    </section>
+
+    <!--Gallery-->
+    <section class="gallery-section">
+        <p class="section-label reveal">The Collection</p>
+
+        <div class="gallery-grid" id="gallery">
+
+            <!--1. face_watermelon-->
+            <div class="gallery-card reveal" data-title="Saint Sandia"
+                data-caption="The watermelon backdrop just make him look sooo tuff — Can we talk about the linup? SHOUTOUT TO THE BARBER DAWG lowkey tufff"
+                data-img="assets/artwork/face_watermelon.png" data-song="assets/audio/saint_sandia.mp3">
+                <div class="card-img-wrap">
+                    <img src="assets/artwork/face_watermelon.png" class="card-img"
+                        alt="A figure with a watermelon halo on a blue background" />
+                </div>
+                <div class="card-body">
+                    <p class="card-title">Saint Sandia</p>
+                    <p class="card-caption">The watermelon backdrop just make him look sooo tuff — Can we talk about the
+                        linup? <strong>SHOUTOUT TO THE BARBER DAWG</strong> lowkey tufff</p>
+                </div>
+            </div>
+
+            <!--2. irl_reaction-->
+            <div class="gallery-card reveal" data-title="Maximum Overwhelm"
+                data-caption="This is literally me when I laugh at something and nobody else does. The hair, the hands on the face, the full body reaction. That's my reaction. Captured perfectly."
+                data-img="assets/artwork/irl_reaction.png" data-song="assets/audio/maximum_overwhelm.mp3">
+                <div class="card-img-wrap">
+                    <img src="assets/artwork/irl_reaction.png" class="card-img"
+                        alt="A frantic sketch of a figure overwhelmed, hands on face" />
+                </div>
+                <div class="card-body">
+                    <p class="card-title">Maximum Overwhelm</p>
+                    <p class="card-caption">This is literally me when I laugh at something and nobody else does. The
+                        hair, the hands on the face, the full body reaction. That's my reaction. Captured perfectly.</p>
+                </div>
+            </div>
+
+            <!--3. minecraft_rizz-->
+            <div class="gallery-card reveal" data-title="He'll Do It Again"
+                data-caption="He will for sure do it again. No doubt. But hold on — watch out for the golem that might be lurking. He does not regret it. He will respawn anyway."
+                data-img="assets/artwork/minecraft_rizz.png" data-song="assets/audio/minecraft_rizz.mp3">
+                <div class="card-img-wrap">
+                    <img src="assets/artwork/minecraft_rizz.png" class="card-img"
+                        alt="A chaotic Minecraft-style drawing with speech bubbles" />
+                </div>
+                <div class="card-body">
+                    <p class="card-title">He'll Do It Again</p>
+                    <p class="card-caption">He will for sure do it again. No doubt. But hold on — watch out for the
+                        golem that might be lurking. He does not regret it. He will respawn anyway.</p>
+                </div>
+            </div>
+
+            <!--4. muscle_watermelon-->
+            <div class="gallery-card reveal" data-title="Sr. Santia, Champion"
+                data-caption="Strong and sweet all at once. The watermelon slices just floating around him looking so good — genuinely would not mind grabbing one. He earned those. We all did."
+                data-img="assets/artwork/muscle_watermelon.png" data-song="assets/audio/champion.mp3">
+                <div class="card-img-wrap">
+                    <img src="assets/artwork/muscle_watermelon.png" class="card-img"
+                        alt="A muscular figure with a watermelon head raising a fist, surrounded by watermelon slices" />
+                </div>
+                <div class="card-body">
+                    <p class="card-title">Sr. Santia, Champion</p>
+                    <p class="card-caption">Strong and sweet all at once. The watermelon slices just floating around him
+                        looking so good — genuinely would not mind grabbing one. He earned those. We all did.</p>
+                </div>
+            </div>
+
+            <!--5. red_hair_girl-->
+            <div class="gallery-card reveal" data-title="Carried"
+                data-caption="Loving the red hair — the way it flows like it has somewhere to be. And she just looks up, so calm, like nothing in the world can touch her right now. That kind of calm is rare."
+                data-img="assets/artwork/red_hair_girl.png" data-song="assets/audio/Carried.mp3">
+                <div class="card-img-wrap">
+                    <img src="assets/artwork/red_hair_girl.png" class="card-img"
+                        alt="A figure with flowing red hair against a grey background, looking upward" />
+                </div>
+                <div class="card-body">
+                    <p class="card-title">Carried</p>
+                    <p class="card-caption">Loving the red hair — the way it flows like it has somewhere to be. And she
+                        just looks up, so calm, like nothing in the world can touch her right now. That kind of calm is
+                        rare.</p>
+                </div>
+            </div>
+
+            <!--6. Sandia_grey_girl_looking_down-->
+            <div class="gallery-card reveal" data-title="Quiet Dissolve"
+                data-caption="The soft lines and lowered gaze in Quiet Dissolve feel tender. There is gentleness in the gesture, as if the piece speaks quietly instead of loudly."
+                data-img="assets/artwork/Sandia_grey_girl_looking_down.png" data-song="assets/audio/quiet_dissolve.mp3">
+                <div class="card-img-wrap">
+                    <img src="assets/artwork/Sandia_grey_girl_looking_down.png" class="card-img"
+                        alt="A delicate grey sketch of a figure looking downward with soft blue washes" />
+                </div>
+                <div class="card-body">
+                    <p class="card-title">Quiet Dissolve</p>
+                    <p class="card-caption">The soft lines and lowered gaze in Quiet Dissolve feel tender. There is
+                        gentleness in the gesture, as if the piece speaks quietly instead of loudly.</p>
+                </div>
+            </div>
+
+            <!--7. sitting_down-->
+            <div class="gallery-card reveal" data-title="Pocket World"
+                data-caption="So stunning to have a whole world frozen in time in its own little place. Everything still, everything held. A reminder that some of the most beautiful things are the ones small enough to fit in your pocket."
+                data-img="assets/artwork/sitting_down.png" data-song="assets/audio/pocket_world.mp3">
+                <div class="card-img-wrap">
+                    <img src="assets/artwork/sitting_down.png" class="card-img"
+                        alt="A tiny detailed sketch on a sticky note beside a pen" />
+                </div>
+                <div class="card-body">
+                    <p class="card-title">Pocket World</p>
+                    <p class="card-caption">So stunning to have a whole world frozen in time in its own little place.
+                        Everything still, everything held. Some of the most beautiful things are small enough to fit in
+                        your pocket.</p>
+                </div>
+            </div>
+
+            <!--8. stand_your_ground-->
+            <div class="gallery-card reveal" data-title="Stand Your Ground" data-caption="Just look at that, giving off anime vibe with the purple coat on the
+                        character
+                        with The stance and expression truly capture the feeling of standing firm and not backing
+                        down." data-img="assets/artwork/stand_your_ground.png"
+                data-song="assets/audio/stand_your_ground.mp3">
+                <div class="card-img-wrap">
+                    <img src="assets/artwork/stand_your_ground.png" class="card-img"
+                        alt="A character with white hair and a long purple cloak seen from behind" />
+                </div>
+                <div class="card-body">
+                    <p class="card-title">Stand Your Ground</p>
+                    <p class="card-caption">Just look at that, giving off anime vibe with the purple coat on the
+                        character
+                        with The stance and expression truly capture the feeling of standing firm and not backing
+                        down.</p>
+                </div>
+            </div>
+
+            <!--9. sunlight_shining-->
+            <div class="gallery-card reveal" data-title="Sunlight Shining"
+                data-caption="Sunlight Shining glows with warmth. The circle rests like a small sun, while light and shadow dance around it, creating their own silent story."
+                data-img="assets/artwork/sunlight_shining.png" data-song="assets/audio/sunlight_shining.mp3">
+                <div class="card-img-wrap">
+                    <img src="assets/artwork/sunlight_shining.png" class="card-img"
+                        alt="A small figure with antlers standing in a vast landscape reaching toward a glowing sky" />
+                </div>
+                <div class="card-body">
+                    <p class="card-title">Sunlight Shining</p>
+                    <p class="card-caption">Sunlight Shining glows with warmth. The circle rests like a small sun, while
+                        light and shadow dance around it, creating their own silent story.</p>
+                </div>
+            </div>
+
+            <!--10. thanks_watermelon-->
+            <div class="gallery-card reveal" data-title="A Whole Month!!" data-caption="A whole month? I could not imagine how quick that must have went. It gives a
+                        sense of time passing and makes me think about how lucky they are."
+                data-img="assets/artwork/thanks_watermelon.png" data-song="assets/audio/whole_month.mp3">
+                <div class="card-img-wrap">
+                    <img src="assets/artwork/thanks_watermelon.png" class="card-img"
+                        alt="A watermelon-headed figure looking at a phone call, surrounded by confetti and excited text" />
+                </div>
+                <div class="card-body">
+                    <p class="card-title">A Whole Month!!</p>
+                    <p class="card-caption">A whole month? I could not imagine how quick that must have went. It gives a
+                        sense of time passing and makes me think about how lucky they are.</p>
+                </div>
+            </div>
+
+            <!--11. white_eye_drained-->
+            <div class="gallery-card reveal" data-title="White Eye"
+                data-caption="The distant stare feels endless. It gives the impression that the gaze goes far beyond the artwork itself."
+                data-img="assets/artwork/white_eye_drained.png" data-song="assets/audio/white_eye.mp3">
+                <div class="card-img-wrap">
+                    <img src="assets/artwork/white_eye_drained.png" class="card-img"
+                        alt="A close-up blue pencil sketch of intense expressive eyes" />
+                </div>
+                <div class="card-body">
+                    <p class="card-title">White Eye</p>
+                    <p class="card-caption">The distant stare feels endless. It gives the impression that the gaze goes
+                        far beyond the artwork itself</p>
+                </div>
+            </div>
+
+        </div><!--gallery-grid-->
+    </section>
+
+    <!--Appreciation-->
+    <section class="appreciation">
+        <span class="appreciation-label reveal">with gratitude</span>
+        <p class="appreciation-text reveal">
+            Thank you for sharing your creativity.<br>
+            <em>I wanted these pieces to have their own place</em> —<br>
+            somewhere quiet, where they could breathe.
+        </p>
+        <p class="appreciation-sig reveal">— made with care, for you.</p>
+    </section>
+
+    <!--Lightbox-->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork viewer">
+        <div class="lightbox-backdrop" id="lbBackdrop"></div>
+        <div class="lightbox-inner">
+            <button class="lightbox-close" id="lbClose" aria-label="Close">&times;</button>
+            <button class="lightbox-mute" id="lbMuteBtn" aria-label="Mute" title="Mute">🎵</button>
+            <button class="lightbox-nav prev" id="lbPrev" aria-label="Previous">&#8592;</button>
+            <button class="lightbox-nav next" id="lbNext" aria-label="Next">&#8594;</button>
+            <img class="lightbox-img" id="lbImg" src="" alt="" />
+            <p class="lightbox-title" id="lbTitle"></p>
+            <p class="lightbox-caption" id="lbCaption"></p>
+        </div>
+    </div>
+
+    <!--Watermelon Easter Egg-->
+    <div class="watermelon-wrap">
+        <span class="watermelon-hint">🍉 little surprise</span>
+        <button class="watermelon-btn" id="wmBtn" aria-label="Play music" title="A little surprise">🍉</button>
+    </div>
+
+    <!--Audio-->
+    <audio id="bgAudio" loop>
+        <source src="assets/audio/calm.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
