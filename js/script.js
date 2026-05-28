@@ -1,4 +1,4 @@
-/* ─── Particles ─────────────────────────────────────────── */
+/* Particles */
 (function () {
   const canvas = document.getElementById('particles');
   const ctx    = canvas.getContext('2d');
@@ -40,7 +40,7 @@
   resize(); init(); loop();
 })();
 
-/* ─── Scroll Reveal ─────────────────────────────────────── */
+/* Scroll Reveal */
 const revealEls = document.querySelectorAll('.reveal');
 const revealObs = new IntersectionObserver((entries) => {
   entries.forEach((e) => {
@@ -54,7 +54,7 @@ const revealObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 revealEls.forEach(el => revealObs.observe(el));
 
-/* ─── Audio setup ───────────────────────────────────────── */
+/* Audio setup */
 const bgAudio = document.getElementById('bgAudio');
 const wmBtn   = document.getElementById('wmBtn');
 const globalMuteBtn = document.getElementById('globalMuteBtn');
@@ -69,7 +69,7 @@ let wmPlaying   = false; // watermelon song active
 let cardMuted   = false; // in-lightbox mute for current card
 let cardSongSrc = null;  // src of card song (null = no card open)
 
-/* ── Helpers ── */
+/* Helpers */
 function applyMuteState() {
   // Global mute wins; card mute is secondary
   bgAudio.muted = globalMuted || cardMuted;
@@ -88,14 +88,14 @@ function updateLbMuteBtn() {
   btn.title       = cardMuted ? 'Unmute' : 'Mute';
 }
 
-/* ── Global mute toggle ── */
+/* Global mute toggle */
 globalMuteBtn.addEventListener('click', () => {
   globalMuted = !globalMuted;
   applyMuteState();
   updateGlobalMuteBtn();
 });
 
-/* ── Watermelon button ── */
+/* ── Watermelon button */
 wmBtn.addEventListener('click', () => {
   // Do nothing while a card is open
   if (cardSongSrc) return;
@@ -117,7 +117,7 @@ wmBtn.addEventListener('click', () => {
   }
 });
 
-/* ── Play a card song ── */
+/* Play a card song */
 function playCardSong(src) {
   // Stop watermelon if going
   if (wmPlaying) {
@@ -138,7 +138,7 @@ function playCardSong(src) {
   updateLbMuteBtn();
 }
 
-/* ── Stop card song (lightbox close) ── */
+/* Stop card song */
 function stopCardSong() {
   bgAudio.pause();
   bgAudio.currentTime = 0;
@@ -151,7 +151,7 @@ function stopCardSong() {
   applyMuteState();
 }
 
-/* ── Toggle in-lightbox mute ── */
+/* Toggle in-lightbox mute */
 function toggleCardMute() {
   if (!cardSongSrc) return;
   cardMuted = !cardMuted;
@@ -159,7 +159,7 @@ function toggleCardMute() {
   updateLbMuteBtn();
 }
 
-/* ─── Lightbox ──────────────────────────────────────────── */
+/* Lightbox */
 const cards      = Array.from(document.querySelectorAll('.gallery-card'));
 const lb         = document.getElementById('lightbox');
 const lbImg      = document.getElementById('lbImg');
@@ -231,3 +231,52 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight')         navigate(1);
   if (e.key === 'm' || e.key === 'M') toggleCardMute();
 });
+
+/* Cursor Trail */
+(function () {
+  // Mix of sparkles (circle) and watermelon seeds (tiny oval)
+  const SPARKS = [
+    { type: 'circle', color: 'rgba(179,136,255,', size: 5 },
+    { type: 'circle', color: 'rgba(255,179,217,', size: 4 },
+    { type: 'circle', color: 'rgba(124,77,255,',  size: 3 },
+    { type: 'seed',   color: '#2d2d2d',            size: 6 },
+    { type: 'seed',   color: '#1a3a1a',            size: 5 },
+  ];
+
+  let lastX = -999, lastY = -999;
+  const MIN_DIST = 14;
+
+  document.addEventListener('mousemove', (e) => {
+    const dx = e.clientX - lastX;
+    const dy = e.clientY - lastY;
+    if (Math.sqrt(dx*dx + dy*dy) < MIN_DIST) return;
+    lastX = e.clientX; lastY = e.clientY;
+
+    const s = SPARKS[Math.floor(Math.random() * SPARKS.length)];
+    const el = document.createElement('div');
+    el.className = 'cursor-spark';
+
+    const jx = (Math.random() - 0.5) * 10;
+    const jy = (Math.random() - 0.5) * 10;
+    el.style.left = (e.clientX + jx) + 'px';
+    el.style.top  = (e.clientY + jy) + 'px';
+
+    if (s.type === 'seed') {
+      el.style.width           = s.size + 'px';
+      el.style.height          = (s.size * 1.7) + 'px';
+      el.style.background      = s.color;
+      el.style.borderRadius    = '50%';
+      el.style.transform       = `translate(-50%,-50%) rotate(${Math.random()*60-30}deg)`;
+      el.style.boxShadow       = '0 0 3px rgba(255,179,217,0.3)';
+    } else {
+      el.style.width      = s.size + 'px';
+      el.style.height     = s.size + 'px';
+      const alpha = 0.55 + Math.random() * 0.4;
+      el.style.background = s.color + alpha + ')';
+      el.style.boxShadow  = `0 0 ${s.size + 2}px ${s.color}0.4)`;
+    }
+
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 750);
+  });
+})();
